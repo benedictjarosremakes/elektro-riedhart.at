@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elektro Riedhart | Innovative Elektrolösungen im Zillertal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Colors */
+            --color-bg: #F8F9FA;
+            --color-surface: #FFFFFF;
+            --color-text: #1A1D20;
+            --color-text-muted: #6C757D;
+            --color-accent: #D9232E;
+            --color-accent-secondary: #11607D;
+            --color-footer-bg: #111110;
+            
+            /* Typography */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Fluid Type Scale */
+            --text-xs: clamp(0.75rem, 1.5vw, 0.875rem);
+            --text-sm: clamp(0.875rem, 1.8vw, 1rem);
+            --text-base: clamp(1rem, 2vw, 1.125rem);
+            --text-lg: clamp(1.125rem, 2.5vw, 1.375rem);
+            --text-xl: clamp(1.375rem, 3vw, 1.75rem);
+            --text-2xl: clamp(1.75rem, 4vw, 2.5rem);
+            --text-3xl: clamp(2.25rem, 5vw, 3.5rem);
+            --text-4xl: clamp(3rem, 7vw, 5rem);
+            
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-24: 6rem;
+            --space-32: 8rem;
+            --section-padding: clamp(4rem, 10vw, 8rem);
+            
+            /* Layout */
+            --container-max: 1280px;
+            --header-height: 80px;
+            
+            /* Z-Index */
+            --z-base: 0;
+            --z-raised: 10;
+            --z-dropdown: 100;
+            --z-sticky: 200;
+            --z-overlay: 500;
+            --z-modal: 1000;
+            --z-toast: 2000;
+            --z-max: 9000;
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, .font-heading {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--color-text);
+        }
+
+        h1 { font-size: var(--text-4xl); }
+        h2 { font-size: var(--text-3xl); margin-bottom: var(--space-4); }
+        h3 { font-size: var(--text-2xl); margin-bottom: var(--space-3); }
+        
+        p {
+            margin-bottom: var(--space-4);
+            color: var(--color-text-muted);
+        }
+
+        .text-lead {
+            font-size: var(--text-lg);
+            color: var(--color-text);
+        }
+
+        .label {
+            font-family: var(--font-heading);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-accent);
+            font-weight: 700;
+            display: block;
+            margin-bottom: var(--space-2);
+        }
+
+        /* Icons */
+        [data-lucide] {
+            display: inline-block;
+            vertical-align: middle;
+            flex-shrink: 0;
+            line-height: 1;
+            pointer-events: none;
+            width: 20px;
+            height: 20px;
+            stroke-width: 1.5;
+            color: currentColor;
+        }
+
+        .icon-text, .btn, .value-item h3, .footer-contact li, .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45em;
+        }
+
+        /* Layout Utilities */
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        section {
+            padding: var(--section-padding) 0;
+        }
+
+        .relative-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .relative-section .container {
+            position: relative;
+            z-index: var(--z-raised);
+        }
+
+        .watermark-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: var(--z-base);
+        }
+
+        .watermark-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(4rem, 12vw, 15rem);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--color-text);
+            opacity: 0.03;
+            white-space: nowrap;
+            user-select: none;
+            letter-spacing: -0.02em;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--color-accent);
+            color: #fff;
+            padding: 8px;
+            z-index: var(--z-max);
+            transition: top 0.2s;
+        }
+        .skip-link:focus { top: 0; }
+
+        /* Buttons */
+        .btn {
+            padding: 1rem 2rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: var(--text-sm);
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            background: var(--color-accent);
+            color: #fff;
+            border-radius: 0;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            position: relative;
+            z-index: var(--z-raised);
+        }
+
+        .btn:hover {
+            background: #b81d26;
+            transform: translateY(-2px);
+        }
+
+        .btn--outline {
+            background: transparent;
+            color: var(--color-text);
+            border: 2px solid var(--color-text);
+        }
+
+        .btn--outline:hover {
+            background: var(--color-text);
+            color: #fff;
+        }
+
+        /* Header & Navigation */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--color-surface);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: var(--z-raised);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2em;
+        }
+
+        .logo-accent {
+            color: var(--color-accent);
+        }
+
+        .site-header .nav-links {
+            display: flex;
+            gap: var(--space-8);
+        }
+
+        .nav-links a {
+            font-family: var(--font-heading);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Mobile Nav Toggle */
+        .nav-toggle {
+            display: none;
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1002;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            width: 44px;
+            height: 44px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--color-text);
+            margin: 5px auto;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Mobile Overlay */
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: var(--color-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-overlay.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-overlay .nav-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .mobile-overlay .nav-links a {
+            font-size: var(--text-2xl);
+            padding: 1rem 0;
+            display: block;
+        }
+
+        .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        @media (max-width: 768px) {
+            .site-header .nav-links { display: none; }
+            .nav-toggle { display: block; }
+        }
+        @media (min-width: 769px) {
+            .nav-toggle { display: none; pointer-events: none; }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            padding-top: var(--header-height);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--color-bg);
+        }
+
+        .hero__content {
+            padding: var(--space-8) var(--space-12);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .hero__image-wrapper {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero__image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            .hero__content {
+                padding: var(--space-16) var(--space-6);
+                min-height: 60vh;
+            }
+            .hero__image-wrapper {
+                height: 40vh;
+            }
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-12);
+        }
+
+        .service-card {
+            background: var(--color-surface);
+            padding: var(--space-8);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        .service-card__icon {
+            color: var(--color-text);
+            margin-bottom: var(--space-4);
+            transition: color 0.3s ease;
+            width: 32px;
+            height: 32px;
+        }
+
+        .service-card:hover .service-card__icon {
+            color: var(--color-accent);
+        }
+
+        .service-card h3 {
+            font-size: var(--text-lg);
+        }
+
+        /* Asymmetric Feature Sections */
+        .feature-split {
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+            margin-bottom: var(--section-padding);
+        }
+
+        .feature-split:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-split__img-wrapper {
+            width: 55%;
+            height: 500px;
+            position: relative;
+        }
+
+        .feature-split__img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-split__content {
+            width: 50%;
+            background: var(--color-surface);
+            padding: var(--space-12);
+            margin-left: -10%;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+        }
+
+        .feature-split--reverse {
+            flex-direction: row-reverse;
+        }
+
+        .feature-split--reverse .feature-split__content {
+            margin-left: 0;
+            margin-right: -10%;
+        }
+
+        @media (max-width: 1024px) {
+            .feature-split, .feature-split--reverse {
+                flex-direction: column;
+                gap: 0;
+            }
+            .feature-split__img-wrapper, .feature-split__content {
+                width: 100%;
+                margin: 0;
+            }
+            .feature-split__content {
+                margin-top: -3rem;
+                padding: var(--space-8);
+            }
+        }
+
+        /* Values Section */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-12);
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: var(--space-12);
+        }
+
+        .value-item h3 {
+            font-size: var(--text-lg);
+        }
+
+        .value-item h3 [data-lucide] {
+            color: var(--color-accent-secondary);
+        }
+
+        /* Career Banner */
+        .career-banner {
+            background: var(--color-text);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .career-banner .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+        }
+
+        .career-banner__content {
+            width: 50%;
+            padding: var(--section-padding) 0;
+            padding-right: var(--space-12);
+        }
+
+        .career-banner__content h2, .career-banner__content p {
+            color: #fff;
+        }
+
+        .career-banner__content .label {
+            color: var(--color-accent);
+        }
+
+        .career-banner__img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+        }
+
+        .career-banner__img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 1024px) {
+            .career-banner .container {
+                flex-direction: column;
+            }
+            .career-banner__content {
+                width: 100%;
+                padding-right: 0;
+            }
+            .career-banner__img {
+                position: relative;
+                width: 100%;
+                height: 400px;
+            }
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--color-footer-bg);
+            color: #fff;
+            padding: clamp(4rem, 8vw, 7rem) 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--space-12);
+            margin-bottom: var(--space-16);
+        }
+
+        .site-footer .logo {
+            color: #fff;
+            margin-bottom: var(--space-4);
+            display: inline-flex;
+        }
+
+        .footer-brand p {
+            color: #A0A0A0;
+            max-width: 300px;
+        }
+
+        .social-links {
+            margin-top: var(--space-6);
+        }
+
+        .social-links a {
+            color: #fff;
+            opacity: 0.7;
+            padding: 0.5rem;
+            margin-left: -0.5rem;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            color: var(--color-accent);
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: var(--text-base);
+            margin-bottom: var(--space-6);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        .footer-col a, .footer-col button {
+            color: #A0A0A0;
+            font-size: var(--text-sm);
+            text-align: left;
+        }
+
+        .footer-col a:hover, .footer-col button:hover {
+            color: #fff;
+        }
+
+        .footer-contact li {
+            color: #A0A0A0;
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-3);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: var(--space-6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            color: #666;
+            font-size: var(--text-xs);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: var(--space-6);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Modals & Overlays */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: var(--z-modal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-backdrop.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: var(--color-surface);
+            width: 90%;
+            max-width: 480px;
+            padding: var(--space-8);
+            border-radius: 0;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            color: var(--color-text);
+        }
+
+        .modal-backdrop.is-open .modal-card {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            color: var(--color-text-muted);
+            padding: var(--space-2);
+        }
+
+        .modal-close:hover {
+            color: var(--color-accent);
+        }
+
+        .modal-card h3 {
+            margin-bottom: var(--space-4);
+            padding-right: var(--space-6);
+        }
+
+        .modal-card a {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: var(--space-6);
+            left: var(--space-6);
+            right: var(--space-6);
+            max-width: 600px;
+            background: var(--color-surface);
+            padding: var(--space-6);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            z-index: var(--z-toast);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+            transform: translateY(150%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cookie-banner.is-visible {
+            transform: translateY(0);
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: var(--space-4);
+        }
+
+        @media (max-width: 480px) {
+            .cookie-actions {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+    </style>
+</head>
+<body>
+<!-- DEMO NOTICE BANNER - benedictjaros.com -->
+<style>
+#__demo_spacer{display:block;}
+#__demo_notice,#__demo_notice *{box-sizing:border-box;margin:0;padding:0;}
+#__demo_notice{
+  position:fixed;top:0;left:0;right:0;z-index:99999;
+  background:rgba(9,9,11,.97);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  font-family:system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+#__demo_inner{
+  max-width:1280px;margin:0 auto;
+  padding:0 44px 0 18px;min-height:38px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+#__demo_dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;background:#f5c842;box-shadow:0 0 7px rgba(245,200,66,.55);}
+#__demo_label{color:#f5c842;font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;flex-shrink:0;}
+#__demo_divider{color:rgba(255,255,255,.15);font-size:12px;flex-shrink:0;}
+#__demo_text{color:rgba(255,255,255,.45);font-size:11.5px;line-height:1.45;flex:1 1 160px;}
+#__demo_links{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+#__demo_links a{
+  color:rgba(255,255,255,.38);font-size:11px;text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  transition:color .15s,border-color .15s;white-space:nowrap;
+}
+#__demo_links a:hover{color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.4);}
+#__demo_link_sep{color:rgba(255,255,255,.15);font-size:10px;}
+#__demo_close{
+  position:absolute;right:0;top:0;bottom:0;width:40px;
+  background:none;border:none;cursor:pointer;
+  color:rgba(255,255,255,.28);font-size:16px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:color .15s;
+}
+#__demo_close:hover{color:rgba(255,255,255,.7);}
+@media(max-width:560px){
+  #__demo_inner{padding:7px 44px 7px 14px;gap:6px;}
+  #__demo_text{font-size:11px;flex:1 1 100%;order:3;}
+  #__demo_dot,#__demo_label{order:1;}
+  #__demo_divider{order:2;}
+  #__demo_links{order:4;}
+}
+</style>
+<div id="__demo_spacer"></div>
+<div id="__demo_notice" role="banner" aria-label="Demo notice">
+  <div id="__demo_inner">
+    <span id="__demo_dot"></span>
+    <span id="__demo_label">Demo</span>
+    <span id="__demo_divider">/</span>
+    <span id="__demo_text">Unofficial remake &mdash; not the real website. All content &amp; trademarks belong to their owners.</span>
+    <div id="__demo_links">
+      <a href="https://benedictjaros.com/impressum" target="_blank" rel="noopener noreferrer">Impressum</a>
+      <span id="__demo_link_sep">&middot;</span>
+      <a href="https://benedictjaros.com/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+    </div>
+  </div>
+  <button id="__demo_close" aria-label="Close demo notice">&#x2715;</button>
+</div>
+<script>
+(function () {
+  var spacer = document.getElementById('__demo_spacer');
+  var b = document.getElementById('__demo_notice');
+  var x = document.getElementById('__demo_close');
+  if (!b || !spacer) return;
+  function sync() { spacer.style.height = b.offsetHeight + 'px'; }
+  function hide() {
+    b.style.display = 'none'; spacer.style.height = '0';
+    try { sessionStorage.setItem('__demo_closed', '1'); } catch (e) {}
+  }
+  try { if (sessionStorage.getItem('__demo_closed')) { b.style.display = 'none'; spacer.style.height = '0'; return; } } catch (e) {}
+  sync();
+  window.addEventListener('resize', function () { if (b.style.display !== 'none') sync(); });
+  if (x) x.addEventListener('click', hide);
+}());
+</script>
+
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">Elektro <span class="logo-accent">Riedhart</span></a>
+            
+            <nav class="nav-links">
+                <a href="#leistungen">Leistungen</a>
+                <a href="#unternehmen">Unternehmen</a>
+                <a href="#karriere">Karriere</a>
+                <a href="#kontakt" class="trigger-placeholder" data-title="Kontakt">Kontakt</a>
+            </nav>
+
+            <button class="nav-toggle" aria-expanded="false" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-overlay">
+        <nav class="nav-links">
+            <a href="#leistungen" class="mobile-nav-link">Leistungen</a>
+            <a href="#unternehmen" class="mobile-nav-link">Unternehmen</a>
+            <a href="#karriere" class="mobile-nav-link">Karriere</a>
+            <a href="#kontakt" class="mobile-nav-link trigger-placeholder" data-title="Kontakt">Kontakt</a>
+        </nav>
+    </div>
+
+    <main id="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__content">
+                <span class="label">Engineered Light</span>
+                <h1>Willkommen bei Elektro Riedhart.</h1>
+                <p class="text-lead">Ihr erfahrener Partner für innovative Elektrolösungen im Zillertal. Präzise, zuverlässig und zukunftsorientiert.</p>
+                <a href="#leistungen" class="btn">
+                    Unsere Leistungen <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+            <div class="hero__image-wrapper">
+                <img src="https://www.elektro-riedhart.at/wp-content/uploads/2024/11/Unbenannt-3.jpeg" alt="Moderne Architektur mit innovativer Beleuchtung">
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="leistungen" class="container">
+            <span class="label reveal">Unsere Expertise</span>
+            <h2 class="reveal">Unsere Leistungen</h2>
+            
+            <div class="services-grid">
+                <div class="service-card reveal" style="--i:0">
+                    <i data-lucide="zap" class="service-card__icon"></i>
+                    <h3>Überprüfung Elektroanlagen</h3>
+                    <p>Sicherheit und Normkonformität für Ihre elektrischen Installationen.</p>
+                </div>
+                <div class="service-card reveal" style="--i:1">
+                    <i data-lucide="sun" class="service-card__icon"></i>
+                    <h3>Solar- und Photovoltaikanlagen</h3>
+                    <p>Nachhaltige Energiegewinnung maßgeschneidert für Ihr Gebäude.</p>
+                </div>
+                <div class="service-card reveal" style="--i:2">
+                    <i data-lucide="home" class="service-card__icon"></i>
+                    <h3>Smart-Home-Integration</h3>
+                    <p>Intelligente Vernetzung für mehr Komfort und Energieeffizienz.</p>
+                </div>
+                <div class="service-card reveal" style="--i:3">
+                    <i data-lucide="lightbulb" class="service-card__icon"></i>
+                    <h3>Beleuchtungstechnik</h3>
+                    <p>Innovative Lichtkonzepte für Innen- und Außenbereiche.</p>
+                </div>
+                <div class="service-card reveal" style="--i:4">
+                    <i data-lucide="wrench" class="service-card__icon"></i>
+                    <h3>Wartung und Reparatur</h3>
+                    <p>Schneller und zuverlässiger Service im Zillertal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installations Section with Subtle Background Watermark -->
+        <section id="unternehmen" class="relative-section">
+            <div class="watermark-container">
+                <div class="watermark-text" aria-hidden="true">ELEKTRO RIEDHART</div>
+            </div>
+            
+            <div class="container">
+                <div class="feature-split reveal">
+                    <div class="feature-split__img-wrapper">
+                        <img src="https://www.elektro-riedhart.at/wp-content/uploads/2024/10/Service-und-Reparatur-Bild.webp" alt="Elektroinstallation und Service" loading="lazy">
+                    </div>
+                    <div class="feature-split__content">
+                        <span class="label">Alles aus einer Hand</span>
+                        <h2>Elektroinstallationen und Service</h2>
+                        <p>Seit vielen Jahren sind wir Ihr verlässlicher Partner für sämtliche Elektroinstallationen. Von der ersten Planung bis zur finalen Umsetzung und darüber hinaus stehen wir für höchste Qualität und technische Präzision.</p>
+                        <button class="btn trigger-placeholder" data-title="Mehr Infos: Elektroinstallationen">Mehr Infos</button>
+                    </div>
+                </div>
+
+                <div class="feature-split feature-split--reverse reveal">
+                    <div class="feature-split__img-wrapper">
+                        <img src="https://www.elektro-riedhart.at/wp-content/uploads/2024/05/Screenshot-2024-05-24-160831.png" alt="Solartechnik auf dem Dach" loading="lazy">
+                    </div>
+                    <div class="feature-split__content">
+                        <span class="label">Nutzen Sie die Sonne</span>
+                        <h2>Solartechnik – Nachhaltige Energie für Ihr Zuhause</h2>
+                        <p>Nutzen Sie die Kraft der Sonne mit unseren maßgeschneiderten Solartechnik-Lösungen. Wir planen und installieren effiziente Photovoltaikanlagen, die Ihre Energiekosten senken und die Umwelt schonen.</p>
+                        <button class="btn trigger-placeholder" data-title="Mehr Infos: Solartechnik">Mehr Infos</button>
+                    </div>
+                </div>
+                
+                <div class="values-grid reveal">
+                    <div class="value-item">
+                        <h3><i data-lucide="check-circle"></i> Alles aus einer Hand</h3>
+                        <p>Ein Ansprechpartner für Planung, Ausführung und Wartung.</p>
+                    </div>
+                    <div class="value-item">
+                        <h3><i data-lucide="shield-check"></i> Qualität und Zuverlässigkeit</h3>
+                        <p>Kompromisslose Standards bei Material und Verarbeitung.</p>
+                    </div>
+                    <div class="value-item">
+                        <h3><i data-lucide="users"></i> Im Dienst unserer Kunden</h3>
+                        <p>Persönliche Beratung und regionaler Service im Zillertal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Section -->
+        <section id="karriere" class="career-banner">
+            <div class="career-banner__img">
+                <img src="https://www.elektro-riedhart.at/wp-content/uploads/2024/11/Karriere-bei-Riedhart.jpg" alt="Elektriker bei der Arbeit" loading="lazy">
+            </div>
+            <div class="container">
+                <div class="career-banner__content reveal">
+                    <span class="label">Werden Sie teil unseres Teams</span>
+                    <h2>Karriere bei Elektro Riedhart</h2>
+                    <p>Starten Sie Ihre Karriere bei uns im Zillertal! Wir suchen motivierte Fachkräfte, die unsere Leidenschaft für innovative Technik und höchste Qualitätsstandards teilen. Wir bieten ein modernes Arbeitsumfeld und spannende Projekte.</p>
+                    <button class="btn trigger-placeholder" data-title="Bewerbung">
+                        Zur Bewerbung <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo">Elektro <span class="logo-accent">Riedhart</span></span>
+                    <p>Ihr erfahrener Partner für innovative Elektrolösungen im Zillertal.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Nützliche Links</h4>
+                    <ul>
+                        <li><a href="#">Startseite</a></li>
+                        <li><a href="#leistungen">Leistungen</a></li>
+                        <li><a href="#unternehmen">Unternehmen</a></li>
+                        <li><button class="trigger-placeholder" data-title="Referenzen">Referenzen</button></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li><i data-lucide="map-pin"></i> Zillertal, Österreich</li>
+                        <li><i data-lucide="phone"></i> +43 123 456 789</li>
+                        <li><i data-lucide="mail"></i> office@elektro-riedhart.at</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Elektro Riedhart — All original content, images & trademarks are property of their respective owners. Website rebuilt by Benedict Jaros.</p>
+                <div class="footer-legal">
+                    <button class="trigger-demo-legal">Impressum</button>
+                    <button class="trigger-demo-legal">Datenschutz</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Placeholder Modal -->
+    <div id="placeholder-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-card">
+            <button class="modal-close" aria-label="Schließen"><i data-lucide="x"></i></button>
+            <h3 id="modal-title" class="font-heading">Feature</h3>
+            <p>This feature will be live once the website is launched and configured. Contact us in the meantime — we'd love to hear from you.</p>
+        </div>
+    </div>
+
+    <!-- Demo Legal Modal -->
+    <div id="demo-legal-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
+        <div class="modal-card">
+            <button class="modal-close" aria-label="Schließen"><i data-lucide="x"></i></button>
+            <h3 id="legal-modal-title" class="font-heading">Rechtliche Hinweise</h3>
+            <p>Diese Website ist ein Demo-Remake und wurde nicht von oder für das Unternehmen erstellt. Die Inhalte dienen ausschließlich Demonstrationszwecken. Für unsere eigenen rechtlichen Informationen:</p>
+            <p style="margin-bottom: 0;"><a href="https://benedictjaros.com/impressum" target="_blank">Impressum</a></p>
+            <p><a href="https://benedictjaros.com/datenschutz" target="_blank">Datenschutz</a></p>
+        </div>
+    </div>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie Banner">
+        <h3 class="font-heading" style="font-size: var(--text-lg)">Wir verwenden Cookies</h3>
+        <p style="font-size: var(--text-sm); margin-bottom: 0;">Wir nutzen Cookies, um unsere Website für Sie optimal zu gestalten und fortlaufend zu verbessern.</p>
+        <div class="cookie-actions">
+            <button id="cookie-accept" class="btn">Alle akzeptieren</button>
+            <button id="cookie-decline" class="btn btn--outline">Nur essenzielle</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Mobile Navigation
+        const navToggle = document.querySelector('.nav-toggle');
+        const mobileOverlay = document.querySelector('.mobile-overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMenu() {
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+            mobileOverlay.classList.toggle('is-open');
+            document.body.style.overflow = isExpanded ? '' : 'hidden';
+        }
+
+        navToggle.addEventListener('click', toggleMenu);
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileOverlay.classList.contains('is-open')) toggleMenu();
+            });
+        });
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Modals
+        const placeholderModal = document.getElementById('placeholder-modal');
+        const placeholderTitle = document.getElementById('modal-title');
+        const demoLegalModal = document.getElementById('demo-legal-modal');
+        
+        function openModal(modal) {
+            modal.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModals() {
+            document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('is-open'));
+            document.body.style.overflow = '';
+        }
+
+        // Placeholder Triggers
+        document.querySelectorAll('.trigger-placeholder').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                placeholderTitle.textContent = btn.getAttribute('data-title') || 'Feature';
+                openModal(placeholderModal);
+                if (mobileOverlay.classList.contains('is-open')) toggleMenu();
+            });
+        });
+
+        // Legal Demo Triggers
+        document.querySelectorAll('.trigger-demo-legal').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(demoLegalModal);
+            });
+        });
+
+        // Close Modal Events
+        document.querySelectorAll('.modal-close').forEach(btn => {
+            btn.addEventListener('click', closeModals);
+        });
+
+        document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+            backdrop.addEventListener('click', (e) => {
+                if (e.target === backdrop) closeModals();
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModals();
+        });
+
+        // Cookie Banner
+        const cookieBanner = document.getElementById('cookie-banner');
+        const btnAccept = document.getElementById('cookie-accept');
+        const btnDecline = document.getElementById('cookie-decline');
+
+        if (!localStorage.getItem('cookie_consent')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('is-visible');
+            }, 1000);
+        }
+
+        function handleCookie(choice) {
+            localStorage.setItem('cookie_consent', choice);
+            cookieBanner.classList.remove('is-visible');
+        }
+
+        btnAccept.addEventListener('click', () => handleCookie('accepted'));
+        btnDecline.addEventListener('click', () => handleCookie('declined'));
+    </script>
+</body>
+</html>
